@@ -20,6 +20,11 @@ Works by overriding every vanilla enchantment's `supported_items` attribute to a
 Drop this folder into your world's `datapacks/` directory (or a resource-pack-style
 zip of it), then run `/reload` or restart the world.
 
+> [!NOTE]
+> The items and enchantments in this pack are compiled directly from the vanilla client jar, in this case for **version 26.2**. Therefore, this pack does not work out-of-the-box with other versions of Minecraft and/or modded clients.
+>
+> The next section explains how to update this pack for your desired version of Minecraft. In the future, perhaps I will automate this as a CI/CD workflow so that all of the recent Minecraft versions are supported with a pre-compiled release.
+
 ## Updating for a new Minecraft version
 
 The list of items and enchantments comes directly from a vanilla (or modded) client jar. Two scripts are included to regenerate this pack's contents so it can be easily updated for a new game version.
