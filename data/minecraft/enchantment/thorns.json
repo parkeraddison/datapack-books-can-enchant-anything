@@ -32,7 +32,7 @@
             },
             "type": "minecraft:enchantment_level"
           },
-          "type": "minecraft:random_chance"
+          "condition": "minecraft:random_chance"
         }
       }
     ]
