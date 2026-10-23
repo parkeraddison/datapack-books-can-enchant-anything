@@ -9,19 +9,14 @@ This means you can finally place Unbreaking on a flint and steel, Fire Aspect on
 Works by overriding every vanilla enchantment's `supported_items` attribute to a tag that contains every item in the game.
 
 - `data/bcea/tags/item/all.json`: an item tag listing every item ID in the game (except `air`).
-- `data/minecraft/enchantment/*.json`: a full copy of each vanilla enchantment
-  definition with only the `supported_items` field replaced with `#bcea:all`.
-  Everything else (effects, costs, weights, slots, `primary_items`) is untouched,
-  so enchanting-table behavior is unchanged, only anvil/`/enchant` restrictions
-  are lifted.
+- `data/minecraft/enchantment/*.json`: a full copy of each vanilla enchantment definition with only the `supported_items` field replaced with `#bcea:all`. Everything else (effects, costs, weights, slots, `primary_items`) is untouched, so enchanting-table behavior is unchanged, only anvil/`/enchant` restrictions are lifted.
 
 ## Installation
 
-Drop this folder into your world's `datapacks/` directory (or a resource-pack-style
-zip of it), then run `/reload` or restart the world.
+Drop this folder into your world's `datapacks/` directory (or a resource-pack-style zip of it), then run `/reload` or restart the world.
 
 > [!NOTE]
-> The items and enchantments in this pack are compiled directly from the vanilla client jar, in this case for **version 26.2**. Therefore, this pack does not work out-of-the-box with other versions of Minecraft and/or modded clients.
+> The items and enchantments in this pack are compiled directly from the vanilla client jar. Therefore, this pack does not work out-of-the-box with modded clients that introduce new items/blocks.
 >
 > The next section explains how to update this pack for your desired version of Minecraft. In the future, perhaps I will automate this as a CI/CD workflow so that all of the recent Minecraft versions are supported with a pre-compiled release.
 
@@ -35,6 +30,8 @@ The scripts require Python 3 and no additional dependencies. Run these commands 
 ```shell
 python3 scripts/update_item_tag.py /path/to/client.jar
 python3 scripts/update_enchantments.py /path/to/client.jar
+# Optionally create a zip of the pack:
+zip -r books-can-enchant-anything_VERSION.zip data pack.mcmeta pack.png
 ```
 
 **`update_item_tag.py`** rebuilds `data/bcea/tags/item/all.json` from the jar's `assets/minecraft/items/*.json` item model list (every real item has one; `air` is excluded on purpose).
